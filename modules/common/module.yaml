@@ -1,5 +1,28 @@
 schema_version: 1
 
 name: xpaas.base
+
+labels:
+    - name: "com.redhat.component"
+      value: "jboss-base-rhel7-container"
+    - name: "maintainer"
+      value: "Cloud Enablement Feedback <cloud-enablement-feedback@redhat.com>"
+
+envs:
+    - name: "HOME"
+      value: "/home/jboss"
+
+packages:
+      repositories:
+          - jboss-os
+      install:
+          - yum-utils
+          - unzip
+          - tar
+          - rsync
+run:
+      user: 185
+      workdir: "/home/jboss"
+
 execute:
     - script: add_jboss_user.sh

@@ -4,30 +4,11 @@ name: "jboss/base-rhel7"
 version: "1.1"
 from: "rhel7:7.5-released"
 description: "Base image for all other Middleware container images which provides common set of tools, jboss user and home directory"
-labels:
-    - name: com.redhat.component
-      value: jboss-base-rhel7-container
-    - name: maintainer
-      value: "Cloud Enablement Feedback <cloud-enablement-feedback@redhat.com>"
-envs:
-    - name: "HOME"
-      value: "/home/jboss"
 modules:
       repositories:
            - path: modules
       install:
-          - name: common
-packages:
-      repositories:
-          - jboss-os
-      install:
-          - yum-utils
-          - unzip
-          - tar
-          - rsync
-run:
-      user: 185
-      workdir: "/home/jboss"
+          - name: xpaas.base
 osbs:
       repository:
             name: containers/jboss-base
